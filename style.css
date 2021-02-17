@@ -99,6 +99,10 @@ button{
 .section{
   text-align: center;
   padding: 50px;
+  margin: auto;
+}
+
+.section__container{
   max-width: 1200px;
   margin: auto;
 }
@@ -203,6 +207,7 @@ button{
   /* display: flex; */
   /* flex-direction: column; */
   /* align-items: center; */
+  /* 이미 div태그들로, 한 줄에 하나라서 flex안줘도 됨 */
 }
 
 .major__icon{
@@ -274,3 +279,72 @@ button{
   font-size: calc(var(--font-micro)/2);
   color: var(--color-grey);
 }
+
+
+/* skills */
+#skills{
+  background-color: var(--color-yellow);
+}
+
+.skillset{
+  display: flex;
+  /* justify-content: center; */
+  color: var(--color-white);
+  margin: 20px 0;
+  background-color: var(--color-light-grey);
+}
+
+.skillset_title{
+  color: var(--color-light-white);
+  /* font-weight: var(--weight-semi-bold); */
+}
+
+.skillset_left{
+  background-color: var(--color-dark-grey);
+  flex: 1 1 60%;
+  padding: 20px 40px; 
+}
+
+.skill__description{
+  display: flex;
+  justify-content: space-between;
+  
+  /* margin: 10px 0; */
+  
+}
+
+/* .skill{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+} */
+
+
+.skill{
+  margin-bottom: 32px;
+}
+
+.skill_bar{
+  background-color: var(--color-grey);
+  width: 100%;
+  height: 3px;
+}
+
+.skill_value{
+  background-color: var(--color-orange);
+  height: 3px;
+}
+
+.skillset_right{
+  flex: 1 1 40%;
+}
+
+.tools{
+  background-color: var(--color-grey);
+  padding:20px;
+}
+
+.etc{
+  padding:20px;
+} 
