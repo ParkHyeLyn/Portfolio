@@ -503,6 +503,7 @@ justify-content: center;
   /* margin: 0 40px;
   avatar nthchild에 넣어줘 왼,오 번갈아가면서 쓸데없는 공간 생기니까*/
   padding: 20px;
+  width: 100%;
   /* color:  var(--color-dark-white); */
   /* 여기서 색깔 지정하면 안되는 것 주의 */
 }
@@ -513,4 +514,39 @@ justify-content: center;
 
 .testimonial__speech-bubble a{
   color: var(--color-dark-pink);
+}
+
+/* contact */
+#contact{
+  background-color: var(--color-pink);
+}
+
+.contact__title,
+.contact__email{
+  color: var(--color-white);
+}
+
+.contact__title{
+  margin: 32px 0;
+}
+
+
+.contact__links{
+  margin: 18px 0;
+  font-size: var(--font-medium);
+  
+}
+
+.contact__links i{
+  transition: all var(--animation-duration) ease-in;
+}
+
+.contact__links i:hover{
+  transform: scale(1.1,1.1);
+  color: var(--color-yellow);
+}
+
+.contact__right{
+  color: var(--color-light-white);
+  font-size: var(--font-micro);
 }
