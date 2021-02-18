@@ -420,7 +420,7 @@ justify-content: center;
   position: relative;
   display: flex;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
 }
 
 .project__img{
@@ -464,4 +464,53 @@ justify-content: center;
   left: 50%;
   margin-left: -12px;
   margin-top: 8px;
+}
+
+
+/* testimonials */
+
+#testimonials{
+  background-color: var(--color-light-white);
+}
+
+.testimonials{
+  margin: 40px;
+}
+
+.testimonial{
+  display: flex;
+  margin: 32px 0px;
+}
+
+
+.testimonial__avatar{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.testimonial__avatar:nth-child(odd){
+  margin-right: 40px;
+}
+
+.testimonial__avatar:nth-child(even){
+  margin-left: 40px;
+}
+
+.testimonial__speech-bubble{
+  background-color: var(--color-white);
+  border-radius: var(--size-border-radius);
+  /* margin: 0 40px;
+  avatar nthchild에 넣어줘 왼,오 번갈아가면서 쓸데없는 공간 생기니까*/
+  padding: 20px;
+  /* color:  var(--color-dark-white); */
+  /* 여기서 색깔 지정하면 안되는 것 주의 */
+}
+
+.testimonial__speech-bubble p{
+  color: var(--color-grey);
+}
+
+.testimonial__speech-bubble a{
+  color: var(--color-dark-pink);
 }
