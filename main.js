@@ -39,9 +39,14 @@ const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener("scroll",()=>{
   const opacity = 1- (window.scrollY / homeHeight);
   home.style.opacity= opacity;
-  console.log(homeHeight)
+  homeContactBtn.style.opacity= opacity;
+  homeContactBtn.addEventListener("mouseover",()=>{
+    homeContactBtn.style.opacity= 1;
+  });
+  homeContactBtn.addEventListener("mouseleave",()=>{
+    homeContactBtn.style.opacity= opacity;
+  });
 })
-
 
 
 

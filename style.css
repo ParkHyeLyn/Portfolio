@@ -212,6 +212,7 @@ button{
   font-size: var(--font-regular);
   font-weight: var(--weight-semi-bold);
   /* 폰트사이즈, 웨잇, 마진을  패딩으로 */
+  transition: opacity 300ms ease-in;
 }
 
 
