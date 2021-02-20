@@ -30,6 +30,23 @@ homeContactBtn.addEventListener("click",(event)=>{
   scrollIntoView('#contact');
 })
 
+
+// Make Home transparent slowly as scroll down
+// 1.스크롤 이벤트(스크롤이 홈의 2분의 1이 되었을 때) 2.opacity: 0.5 3.애니메이션 효과
+
+const home = document.querySelector('.home__container');
+const homeHeight = home.getBoundingClientRect().height;
+document.addEventListener("scroll",()=>{
+  const opacity = 1- (window.scrollY / homeHeight);
+  home.style.opacity= opacity;
+  console.log(homeHeight)
+})
+
+
+
+
+
+
 function scrollIntoView(selector){
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({behavior:"smooth"});
