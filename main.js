@@ -12,7 +12,7 @@ document.addEventListener("scroll",()=>{
   }
 })
 
-// scroll  to the section when the button is clicked
+// scroll  to the section when the menu items are clicked
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener("click",(event)=>{
   const target = event.target;
@@ -20,7 +20,17 @@ navbarMenu.addEventListener("click",(event)=>{
   if(link == null){
     return; 
   }
-  const scrollTo = document.querySelector(link);
-  scrollTo.scrollIntoView({behavior: "smooth"});
+  scrollIntoView(link);
 });
 
+
+//Handle contact me button
+const homeContactBtn = document.querySelector('.home__contact');
+homeContactBtn.addEventListener("click",(event)=>{
+  scrollIntoView('#contact');
+})
+
+function scrollIntoView(selector){
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({behavior:"smooth"});
+}
