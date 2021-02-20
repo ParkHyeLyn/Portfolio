@@ -111,16 +111,25 @@ button{
 #navbar{
   display:flex;
   justify-content: space-between;
-  background-color: var(--color-pink);
   align-items: center;
   color: var(--color-white);
   padding:16px;
+  position: fixed;
+  background-color: transparent;
+  width: 100%;  
+  transition: all var(--animation-duration) ease-in;
+  transition-property: background-color, padding
+}
+
+#navbar.navbar--dark{
+  background-color: pink;
+  padding: 5px;
 }
 
 .navbar__logo{
   display: flex;
   align-items: center;
-  flex: 1 0 30%
+  flex: 1 0 30%;
 }
 
 .navbar__logo__icon{
@@ -185,6 +194,7 @@ button{
   height: var(--size-avatar);
   border-radius: 50%;
   border: 2px solid var(--color-white);
+  margin-top: 80px;
 }
   
 .home__title,
@@ -640,3 +650,4 @@ justify-content: center;
     font-size: var(--font-small);
   }
 }
+
