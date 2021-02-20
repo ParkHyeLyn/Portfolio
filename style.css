@@ -118,12 +118,13 @@ button{
   background-color: transparent;
   width: 100%;  
   transition: all var(--animation-duration) ease-in;
-  transition-property: background-color, padding
+  transition-property: background-color, padding;
+  z-index : 1;
 }
 
 #navbar.navbar--dark{
   background-color: pink;
-  padding: 5px;
+  padding:  0 10px;
 }
 
 .navbar__logo{
