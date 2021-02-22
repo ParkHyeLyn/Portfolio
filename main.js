@@ -3,6 +3,7 @@
 // Make navbar transparent when it is on the top
 const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect();
+alwaysDarkNav();
 
 document.addEventListener("scroll",()=>{
   if(window.pageYOffset > navbarHeight.height){
@@ -11,7 +12,6 @@ document.addEventListener("scroll",()=>{
     navbar.classList.remove('navbar--dark');
   }
 })
-
 
 //scroll to the section when the navbar menu items are clicked
 const navbarMenu = document.querySelector('.navbar__menu');
@@ -30,6 +30,7 @@ navbarMenu.addEventListener("click",(event)=>{
   const activedMenu = document.querySelector('.navbar__menu__item.active');
   activedMenu.classList.remove('active');
   target.classList.add('active');
+  
 });
 
 
@@ -63,8 +64,12 @@ document.addEventListener("scroll",()=>{
   });
 })
 
+// Make the menu item active when scroll down
+// 1.스크롤 값이 섹션이 위에서부터 떨어져있는 값이랑 같아야한다
+// 섹션이름 = 버튼의 데이터 셋 이름같으면 해당 버튼에 엑티브 클래스를 준다
 
-// show ArrowUp Btn when scroll down
+
+// show ArrowUp Btn when scroll down 
 const arrowUpBtn = document.querySelector('.arrow-up');
 document.addEventListener("scroll",()=>{
   if(window.scrollY < (homeHeight/2)){
@@ -130,6 +135,14 @@ workBtnContainer.addEventListener("click",(event)=>{
 
 
 
+function alwaysDarkNav(){
+  if(window.pageYOffset > navbarHeight.height){
+    navbar.classList.add('navbar--dark');
+  } else {
+    navbar.classList.remove('navbar--dark');
+  }
+}
+  
 function scrollIntoView(selector){
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({behavior:"smooth"});
