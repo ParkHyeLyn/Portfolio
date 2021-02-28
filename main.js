@@ -21,28 +21,21 @@ navbarMenu.addEventListener("click",(event)=>{
   if(link == null){
     return; 
   }
-  scrollIntoView(link);
-
-//remove navbar menu item for small screen 
+  //remove navbar menu item for small screen 
   navbarMenu.classList.remove('open');
-  
-//active navbar menu item when it is clicked
-  const activedMenu = document.querySelector('.navbar__menu__item.active');
-  activedMenu.classList.remove('active');
-  target.classList.add('active');
-  
+  scrollIntoView(link);
 });
 
 
 // navbar toggle button for small screen
 const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
-  navbarToggleBtn.addEventListener("click",()=>{
+navbarToggleBtn.addEventListener("click",()=>{
   navbarMenu.classList.toggle('open');
 })
   
 //Handle contact me button
 const homeContactBtn = document.querySelector('.home__contact');
-homeContactBtn.addEventListener("click",(event)=>{
+homeContactBtn.addEventListener("click",()=>{
   scrollIntoView('#contact');
 })
 
@@ -64,9 +57,6 @@ document.addEventListener("scroll",()=>{
   });
 })
 
-// Make the menu item active when scroll down
-// 1.스크롤 값이 섹션이 위에서부터 떨어져있는 값이랑 같아야한다
-// 섹션이름 = 버튼의 데이터 셋 이름같으면 해당 버튼에 엑티브 클래스를 준다
 
 
 // show ArrowUp Btn when scroll down 
@@ -79,22 +69,18 @@ document.addEventListener("scroll",()=>{
   }
 })
 
+
 // Handle click on the "arrow up"button
 const handleArrowUp = () => {
-
   scrollIntoView('#home');
-
   arrowUpBtn.removeEventListener('click', handleArrowUp);
-
   setTimeout(() => {
-
   arrowUpBtn.addEventListener('click', handleArrowUp);
-
   }, 1000);
-
 };
 
 arrowUpBtn.addEventListener('click', handleArrowUp);
+
 
 
 
@@ -103,8 +89,6 @@ arrowUpBtn.addEventListener('click', handleArrowUp);
 const workBtnContainer = document.querySelector('.work__categories');
 const projectContainer = document.querySelector('.work__projects');
 const projects = document.querySelectorAll('.project');
-
-
 workBtnContainer.addEventListener("click",(event)=>{
   const filter= event.target.dataset.filter || event.target.parentNode.dataset.filter;
   if(filter == null){
@@ -133,6 +117,61 @@ workBtnContainer.addEventListener("click",(event)=>{
 })
 
 
+// Make the menu item active when scroll down
+// 1.스크롤 값이 섹션이 위에서부터 떨어져있는 값이랑 같아야한다
+// 섹션이름 = 버튼의 데이터 셋 이름같으면 해당 버튼에 엑티브 클래스를 준다
+const sectionIds = [
+  '#home',
+  '#about',
+  '#skills',
+  '#work',
+  '#testimonials',
+  '#contact',
+];
+
+const sections = sectionIds.map( id => document.querySelector(id));
+const navItems = sectionIds.map( id => document.querySelector(`[data-link="${id}"]`));
+let selectedNavIndex = 0;
+let selectedNavItem = navItems[0];
+function selectNavItem(selected){
+  selectedNavItem.classList.remove('active');
+  selectedNavItem = selected;
+  selectedNavItem.classList.add('active');
+}
+
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.3
+}
+
+// 처음에는 모든 entry가 찍힌다. (페이지가 만들어지자마자, 로드되자마자
+// 그 섹션들이 밖으로 나가서)
+const observerCallback = (entries,observer)=>{
+  entries.forEach(entry => {
+    if(!entry.isIntersecting && entry.intersectionRatio > 0){
+      const index = sectionIds.indexOf(`#${entry.target.id}`);
+      if(entry.boundingClientRect.y < 0){
+        selectedNavIndex = index + 1;
+      } else {
+        selectedNavIndex = index - 1;
+      }
+    }
+  });
+}
+
+const observer = new IntersectionObserver(observerCallback,observerOptions);
+sections.forEach(section => observer.observe(section));
+
+window.addEventListener("wheel",()=>{
+  if(window.scrollY === 0){
+    selectedNavIndex = 0;
+  } else if(
+    Math.round(window.scrollY + window.innerHeight) >= document.body.clientHeight
+  ){selectedNavIndex = navItems.length-1;
+  }
+  selectNavItem(navItems[selectedNavIndex]);
+})
 
 
 function alwaysDarkNav(){
@@ -142,8 +181,9 @@ function alwaysDarkNav(){
     navbar.classList.remove('navbar--dark');
   }
 }
-  
+
 function scrollIntoView(selector){
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({behavior:"smooth"});
+  selectNavItem(navItems[sectionIds.indexOf(selector)])
 }

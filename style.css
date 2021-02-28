@@ -97,7 +97,8 @@ button{
 }
 
 /* section common */
-.section{
+.section,
+.sesction.active{
   text-align: center;
   padding: 50px;
   margin: auto;
@@ -107,6 +108,8 @@ button{
   max-width: 1200px;
   margin: auto;
 }
+
+
 
 /* navbar */
 #navbar{
@@ -166,6 +169,7 @@ button{
   white-space: nowrap;
   border: 1px solid transparent;
   border-radius: var(--size-border-radius);
+  
 }
 
 .navbar__menu__item.active{
